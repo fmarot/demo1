@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.teamtter</groupId>
@@ -36,7 +37,8 @@
 			<version>${slf4j.version}</version>
 		</dependency>
 
-		<!--<dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-log4j12</artifactId> <version>${slf4j.version}</version> <scope>runtime</scope> </dependency> -->
+		<!--<dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-log4j12</artifactId> 
+			<version>${slf4j.version}</version> <scope>runtime</scope> </dependency> -->
 
 		<!-- Log -->
 		<dependency>
@@ -45,7 +47,8 @@
 			<version>${logback.version}</version>
 		</dependency>
 
-		<!-- since we want the jcl over slf4j, we need to bump up the version of slf4j-api that wicket brings in -->
+		<!-- since we want the jcl over slf4j, we need to bump up the version of 
+			slf4j-api that wicket brings in -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
@@ -158,8 +161,47 @@
 	</dependencies>
 
 	<build>
+		<resources>
+
+			<!-- In wicket, html resources may be put alongside java classes -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</testResource>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+			</testResource>
+		</testResources>
+
+
 		<plugins>
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-war-plugin</artifactId> <version>2.1</version> </plugin> -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-war-plugin</artifactId> 
+				<version>2.1</version> </plugin> -->
 
 			<!-- Désactivation des tests d'integration -->
 			<plugin>
@@ -182,7 +224,8 @@
 					<downloadSources>true</downloadSources>
 					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
-				<!-- <version>2.7</version> <configuration> <wtpversion>1.5</wtpversion> <downloadSources>false</downloadSources> <downloadJavadocs>false</downloadJavadocs> 
+				<!-- <version>2.7</version> <configuration> <wtpversion>1.5</wtpversion> 
+					<downloadSources>false</downloadSources> <downloadJavadocs>false</downloadJavadocs> 
 					</configuration> -->
 
 			</plugin>
