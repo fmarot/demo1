@@ -5,6 +5,8 @@
 
 	<display-name>Wicket Spring</display-name>
 
+	<!-- use war's name as context root => http://127.0.0.1:8081/demo1/ -->
+
 	<!-- Open session in view -->
 	<filter>
 		<filter-name>osiv</filter-name>
