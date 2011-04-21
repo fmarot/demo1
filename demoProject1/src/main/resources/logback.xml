@@ -1,0 +1,45 @@
+<configuration>
+    <contextName>ecom-ws</contextName>
+<!--     <jmxConfigurator/> -->
+<!--     <property file="/etc/conf-psw/applications/ecommerce-4.0/logback.properties"/> -->
+    
+
+
+	<statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />
+
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+<!-- 		<encoder> -->
+<!-- 			<pattern>${format.out.console}</pattern> -->
+<!-- 		</encoder> -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+	</appender>
+
+	<appender name="logfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/${CONTEXT_NAME}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/${CONTEXT_NAME}.log-%d{yyyyMMdd}</fileNamePattern>
+			<maxHistory>4</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${format.out.file}</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+	</appender>
+	
+	<logger name="org.hibernate" level="INFO" />
+	<logger name="org.springframework" level="INFO" />
+	<logger name="org.apache.cxf" level="INFO" />
+	<logger name="com.sfr.psw.util" level="ERROR" />
+	<logger name="com.opensymphony.xwork2" level="ERROR" />
+
+	<root level="debug">
+		<appender-ref ref="stdout" />
+		<appender-ref ref="debugfile" />
+		<appender-ref ref="logfile" />
+	</root>
+	
+</configuration>

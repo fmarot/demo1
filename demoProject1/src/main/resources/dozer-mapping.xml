@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+	<mapping>
+		<class-a>com.sfr.application.ecommerce.ws.partnerapiservice.v1_0.ActivationCalendar</class-a>
+		<class-b>com.sfr.ecommerce.partnerAPI.v3.domain.ActivationCalendar</class-b>
+	</mapping>
+
+
+	<mapping map-null="false">
+		<class-a>com.sfr.application.ecommerce.ws.partnerapiservice.v1_0.ActivationOption</class-a>
+		<class-b>com.sfr.ecommerce.partnerAPI.v3.domain.ActivationOption</class-b>
+	</mapping>
+
+	<mapping>
+		<class-a>com.sfr.application.ecommerce.ws.partnerapiservice.v1_0.Article</class-a>
+		<class-b>com.sfr.ecommerce.core.domain.order.Article</class-b>
+		<field-exclude>
+			<a>MobilePlan</a>
+			<b>MobilePlan</b>
+		</field-exclude>
+		<field-exclude>
+			<a>mobilePackageLineGroup</a>
+			<b>mobilePackageLineGroup</b>
+		</field-exclude>
+	</mapping>
+
+
+</mappings>
